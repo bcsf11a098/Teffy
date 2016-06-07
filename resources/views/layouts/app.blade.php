@@ -25,9 +25,10 @@
 
 
 </head>
+
 <body id="app-layout">
     <div id="wrapper">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top inside-nav">
             <div class="container">
                 <div class="navbar-header">
 
@@ -42,26 +43,53 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="#">
-                        Friend's Book
+                        TEFFY
                     </a>
+                </div>
+                <div class="col-sm-3 col-md-3 pull-right ">
+                  <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="search">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                  </form>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                      @if (!Auth::guest())
-                    <ul class="nav navbar-nav">
-                        <li><a href="{{ url('/home') }}">Home</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav">
-                        <li><a href="/profile/{{Auth::user()->id}}">Profile</a></li>
-                    </ul>
+                    
                     @endif
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+                    
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                              <div class="col-sm-3 col-md-3 pull-right ">
+                            
+                                <ul class="nav navbar-nav">
+                                 <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse<b class="caret"></b></a>
+                                  <ul class="dropdown-menu">
+                                    <li><a href="#">Category1</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Category2</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Category3</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Category4</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Category5</a></li>
+                                  </ul>
+                                </li>
+                                <li class=""><a href="#">Post</a></li>
+                                <li><a href="{{ url('/login') }}">Signin</a></li>
+                                
+                              </ul>
+                            </div>
+                          </div>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -76,21 +104,31 @@
                                 </ul>
                             </li>
                         @endif
-                    </ul>
+                    
                 </div>
             </div>
         </nav>
+      
+      <!--   <div class = 'row'>
+          <div class = "col-md-10 col-md-offset-1">
+              <nav class="navbar navbar-default below-navbar" role="navigation">
+                <div class="col-md-4"><h4>EveryOne nearby</h4></div>
+              </nav>
+          </div>
+        </div>
+ -->
         @if (Auth::guest())
-            @yield('content1')
+          @yield('content1')
+          @yield('content')
          @elseif(Request::is('/'))
          <script type="text/javascript">
             window.location="{{URL::to('/home')}}";
          </script>
          @endif
-            @yield('content')
+          
          
-        <div class="panel-footer">Friend's Book</div>
+        <div class="panel-footer">Teffy.com</div>
     </div>
     <!-- JavaScripts -->
     </body>
-</html>
+    </html>

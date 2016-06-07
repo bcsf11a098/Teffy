@@ -22,8 +22,8 @@
 
 	<div class="row" style="width:99.9%">
 	    <div class="col-md-6 col-md-offset-3 ">
-	        <div class="well bs-component new-post">
-	            <form class="form-horizontal" method="POST" action="/post">
+	        
+	            <!-- <form class="form-horizontal" method="POST" action="/post">
 	            {{ csrf_field() }}
 		           	 <fieldset>
 		           	 <legend ><div id="new_post"><u>New Post</u></div> </legend>
@@ -36,8 +36,37 @@
 					     	</div>
 		      			</div>	
 		    		</fieldset>
-				</form>
-			</div>
+				</form> -->
+
+
+				<button type="button" class="btn btn-link btn-lg" data-toggle="modal" data-target="#myModal">New Post</button>
+
+				<!-- Modal -->
+				<div id="myModal" class="modal fade" role="dialog">
+				  <div class="modal-dialog">
+
+				    <!-- Modal content-->
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal">&times;</button>
+				        <h4 class="modal-title">POST</h4>
+				      </div>
+				      <div class="modal-body form-group">
+				      <div class="form-control">
+				      	  <input type="file"  name ='file'>
+				      </div>
+				   
+				        <textarea name='discription' row='5' class="form-control" col = '10' placeholder="discription"></textarea>
+				   
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				      </div>
+				    </div>
+
+				  </div>
+				</div>
+			<br>
 	        <label class="default"><h3> News Feed </h3></label>
 	        @foreach($posts as $post)
 		        <div class="panel panel-primary">

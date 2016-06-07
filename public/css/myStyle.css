@@ -1,4 +1,7 @@
 
+*{
+	box-sizing: border-box;
+}
 html,
 body {
 	margin:0px;
@@ -11,10 +14,46 @@ body
 {
     font-family: 'Lato';
 }
+.navbar{
+
+	/*background-color: #CADDE3;*/
+	height:80px;
+}
+.inside-nav {
+	padding-top: 1%;
+}
+.search {
+	height:30px;
+}
+.test {
+	border:1px solid black;
+	/*padding-right: 2px;
+	padding-top: 25px;*/
+}
+.nav-btns {
+	padding-top: 25px;
+
+}
+
+.below-navbar{
+
+	margin-top: -20px;
+	background-color: #F2EDED;
+	height:60px;
+}
+
+.aside {
+	height:100px;
+	border:1px solid lightgrey;
+	background-color: #f5f5f5;
+}
+
 
 .fa-btn {
     margin-right: 6px;
 }
+
+
 
  /*Theme own css ends*/
 .side-bar
@@ -148,3 +187,91 @@ body
 {
 	font-size: 13px;
 }
+
+
+
+
+
+
+
+	.row
+	{
+		padding:1px;
+		width:100%;
+	}
+	.a{
+		min-height:300px;
+		/*border: 1px black solid */; 
+		/*background-color: grey;*/	
+		padding: 0px;
+
+	}
+	.a1{
+		/*min-height:300px;*/
+		/*border: 1px black solid ; */
+		/*background-color: grey;*/	
+	}
+
+	.b{
+		margin-top:10px;
+		margin-left:5px; 
+		padding:0;
+		min-height:100px;
+		/*border: 1px black solid;*/
+		/*background-color: red;	*/
+	}
+	.c{
+		margin:3px;
+		/*border:1px solid black;*/
+		height:110px;
+		width:90px;
+
+	}
+	.d{
+		margin-top:10px;
+		padding-left: 0px;
+		padding-right: 0px;
+		margin-left: -5px;
+		min-height:250px;
+		border: 1px grey solid;
+		/*background-color: green;*/	
+	}
+	.e {
+		margin:1px;
+		min-height:110px;
+		/*border: 1px black solid;*/
+	}
+	.f {
+		margin-top: 50px;
+	}
+	.g{
+		margin-left: 17px;
+		width:190px;
+		padding:2px;
+		min-height:300px;
+		border: 1px grey solid ;
+		/*background-color: #d2d2d2;*/
+	}
+	.h {
+		padding:20px;
+		min-height:75px;
+		border: 1px grey solid ;
+
+	}
+	.i{
+		margin: 2px;
+		margin-left : 10px;
+	    margin-bottom: 2px 
+	}
+
+	.j{
+		margin-left : -5px;
+		height:150px;
+		width:180px;
+
+	}
+	.k{
+		margin:5px;
+		margin-left: 20px;
+		border: 1px solid lightgrey ;
+	}
