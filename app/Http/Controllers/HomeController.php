@@ -17,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+    
     }
 
     /**
@@ -27,9 +27,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('user')->orderBy('id','DESC')->get();
+        $posts = Post::orderBy('id','DESC')->paginate(4);
+        
         $users = User::all();
-        return view('Home.home',compact('posts','users'));
+        return view('Home.home',compact('posts'));
+    }
+
+    public function welcome()
+    {
+        $posts = Post::orderBy('id','DESC')->paginate(4);
+        return view('welcome',compact('posts'));
     }
     public function profile($id)
     {

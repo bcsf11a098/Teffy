@@ -12,16 +12,14 @@
 */
 
 Route::group(['middleware'=>['web']],function(){
-	Route::get('/', function () {
-	    return view('welcome');
-	});
+	Route::get('/',	'HomeController@welcome');
 
 	
 
 	Route::get('/home', 'HomeController@index');
 	Route::get('/home/{name}', 'HomeController@profileByName');
 	Route::get('/profile/{id}', 'HomeController@profile');
-	Route::post('/post', 'PostsController@store');
+	Route::post('/listing', 'PostsController@store');
 	Route::post('/updateAccount', 'HomeController@updateAccount');
 	Route::post('/updatePwd', 'HomeController@updatePwd');
 	Route::get('/showUpdatePage', 'HomeController@showUpdatePage');
@@ -32,6 +30,6 @@ Route::group(['middleware'=>['web']],function(){
 	// Route::post('/comment/{post}/{id}', 'CommentController@saveComment');
 	Route::post('/comment/{post}', 'CommentController@savePostComment');
 	Route::post('/commentC/{comment}', 'CommentController@saveCommentComment');
-
+	Route::get('/view', 'PostsController@view');
 });
 Route::auth();

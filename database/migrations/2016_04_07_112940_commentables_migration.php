@@ -12,7 +12,7 @@ class CommentablesMigration extends Migration
      */
     public function up()
     {
-        Schema::create('commentables', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
              $table->string('body');
             $table->integer('commentable_id');
@@ -30,6 +30,6 @@ class CommentablesMigration extends Migration
      */
     public function down()
     {
-        Schema::drop('commentables');
+        Schema::drop('comments');
     }
 }

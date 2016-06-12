@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Friend's</title>
+    <title>TEFFY</title>
    
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -42,16 +42,23 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="#">
-                        TEFFY
+                    @if (Auth::guest())
+                    <a class="navbar-brand" href="/">
+                        <img src="/images/teffy.png" style="width:120px ; height:72px ; margin-top:-31px">
                     </a>
+                    @else
+                    <a class="navbar-brand" href="/home">
+                        <img src="/images/teffy.png" style="width:120px ; height:72px ; margin-top:-31px">
+                    </a>
+                    @endif
+                    
                 </div>
                 <div class="col-sm-3 col-md-3 pull-right ">
                   <form class="navbar-form" role="search">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search" name="search">
+                        <input type="text" class="form-control input-sm" placeholder="Search" name="search">
                         <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            <button class="btn btn-default btn-sm" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                         </div>
                     </div>
                   </form>
@@ -65,7 +72,7 @@
                     <!-- Right Side Of Navbar -->
                     
                         <!-- Authentication Links -->
-                        @if (Auth::guest())
+                        
                           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                               <div class="col-sm-3 col-md-3 pull-right ">
                             
@@ -73,37 +80,39 @@
                                  <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse<b class="caret"></b></a>
                                   <ul class="dropdown-menu">
-                                    <li><a href="#">Category1</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Category2</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Category3</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Category4</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Category5</a></li>
+                                    <li><a href="#">Merchandise</a></li>
+                                    <li><a href="#">Cars</a></li>
+                                    <li><a href="#">Rentals</a></li>
+                                    <li><a href="#">Real Estate</a></li>
+                                    <li><a href="#">Jobs</a></li>
+                                    <li><a href="#">Pets</a></li>
+                                    <li><a href="#">Tickets</a></li>
+                                    <li><a href="#">Services</a></li>
+                                    <li><a href="#">Others</a></li>
                                   </ul>
                                 </li>
-                                <li class=""><a href="#">Post</a></li>
+                                <li><button class="btn btn-link post-btn" data-toggle="modal" data-target="#myModal" style="padding-top:17px">Post</button></li>
+                                @if (Auth::guest())
                                 <li><a href="{{ url('/login') }}">Signin</a></li>
-                                
+                                @else
+                                 <li class="dropdown">
+                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                        {{ Auth::user()->fname }} <span class="caret"></span>
+                                    </a>
+
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="{{ url('/showUpdatePage') }}"><i 
+                                        class="fa fa-btn fa-reset">
+                                        </i>Account Setting</a></li> 
+                                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                    </ul>
+                                </li>
+                              @endif
                               </ul>
                             </div>
                           </div>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ url('/showUpdatePage') }}"><i 
-                                    class="fa fa-btn fa-reset">
-                                    </i>Account Setting</a></li> 
-                                    <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                                </ul>
-                            </li>
-                        @endif
+                       
+                            
                     
                 </div>
             </div>
@@ -119,15 +128,14 @@
  -->
         @if (Auth::guest())
           @yield('content1')
-          @yield('content')
          @elseif(Request::is('/'))
          <script type="text/javascript">
             window.location="{{URL::to('/home')}}";
          </script>
          @endif
-          
-         
-        <div class="panel-footer">Teffy.com</div>
+         @yield('content')
+     
+        <footer class="panel-footer">Teffy.com</footer>
     </div>
     <!-- JavaScripts -->
     </body>

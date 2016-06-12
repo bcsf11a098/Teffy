@@ -14,8 +14,15 @@ class PostsMigration extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('body');
-            $table->integer("user_id");
+            $table->string('what')->nullable();
+            $table->string('why')->nullable();
+            $table->longText('discription')->nullable();
+            $table->string('price')->nullable();
+            $table->string('type')->nullable();
+            $table->string('category')->nullable();
+            $table->string('country')->nullable();
+            $table->string('city')->nullable();
+            $table->integer("user_id")->nullable();
             $table->timestamps();
         });
     }

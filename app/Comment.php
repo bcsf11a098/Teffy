@@ -15,11 +15,15 @@ class Comment extends Model
         'body', 
     ];
 
-
-    public function post()
-	{
-		return $this->belongsTo(Post::class);
-	}
+    public function commentable()
+    {
+        return $this->morphTo();
+    }
+    
+    public function comments()
+    {
+        return $this->morphMany($this ,'commentable');
+    }
 
 	public function user()
 	{
@@ -31,10 +35,18 @@ class Comment extends Model
         return $this->morphMany(Like::class, 'likeable');
     }
 	
-	public function addLike()
+	 public function addLike()
     {
         $like= new Like;
         $like->user_id=Auth::user()->id;
         return $this->likes()->save($like);
+    }
+
+    public function addComment(Request $request ,$id)
+    {
+        $comment= new Comment;
+        $comment->body= $request->comment_body;
+        $comment->user_id=$id;
+        return $this->comments()->save($comment);
     }
 }

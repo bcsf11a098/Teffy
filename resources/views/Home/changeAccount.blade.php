@@ -19,7 +19,7 @@
 						     	<div class="col-md-7">
 				        			<input class="form-control input-lg " 
 				        			id="editName" type="text"
-				        			name="name" value="{{Auth::user()->name}}"readonly >
+				        			name="name" value="{{Auth::user()->fname}}"readonly >
 				      			</div>
 				      			<div class="col-md-1 ">
 							     	<button class=" edit btn btn-lg btn-link" 

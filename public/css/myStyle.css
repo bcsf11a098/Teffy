@@ -14,10 +14,14 @@ body
 {
     font-family: 'Lato';
 }
+footer{
+	position:fixed;
+	bottom:0;;
+}
 .navbar{
 
 	/*background-color: #CADDE3;*/
-	height:80px;
+	/*height:80px;*/
 }
 .inside-nav {
 	padding-top: 1%;
@@ -136,7 +140,16 @@ body
 	display:none;
 	padding-bottom: 0px;
 	padding-top: 5px;
+	margin: 0;
 }
+.comments1
+{
+	/*display:none;*/
+	padding-bottom: 0px;
+	padding-top: 5px;
+	margin: 0;
+}
+
 .replyPanel
 {
 	display:none;
@@ -169,8 +182,13 @@ body
 .likes
 {
 	color:#2c3e50;
+	margin-left: 1px;
+	
+}
+.comment
+{
+	color:#2c3e50;
 	margin-left: -10px;
-	margin-right: 15px;
 	
 }
 .like_a
@@ -222,9 +240,9 @@ body
 	}
 	.c{
 		margin:3px;
-		/*border:1px solid black;*/
-		height:110px;
-		width:90px;
+		border:1px solid lightgrey;
+		height:80px;
+		width:80px;
 
 	}
 	.d{
@@ -234,6 +252,7 @@ body
 		margin-left: -5px;
 		min-height:250px;
 		border: 1px grey solid;
+		padding-top: 3px;
 		/*background-color: green;*/	
 	}
 	.e {
@@ -274,4 +293,37 @@ body
 		margin:5px;
 		margin-left: 20px;
 		border: 1px solid lightgrey ;
+		padding-top: 5px;
 	}
+	.s-price{
+		text-align: right;
+		
+		margin-right: -15px;
+
+	}
+	.r-price{
+		
+		height: 30px;
+	}
+
+.pagination > li > a
+{
+	color:#2c3e50;
+	background-color: white;
+}
+.pagination 
+{
+	border:1px solid #2c3e50;
+	
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus
+{
+	color:white;
+	background-color: #2c3e50;	
+}
+.pagination > li > a:hover
+{
+	color:white;
+	background-color: #2c3e50;
+}

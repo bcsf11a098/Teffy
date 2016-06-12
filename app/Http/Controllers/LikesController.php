@@ -5,8 +5,10 @@ use DB;
 use Auth;
 use Illuminate\Http\Request;
 use App\Post;
-use App\Commentable;
+use App\Comment;
 use App\Http\Requests;
+use Response;
+
 
 class LikesController extends Controller
 {
@@ -15,25 +17,27 @@ class LikesController extends Controller
         $this->middleware('auth');
     }
     
-    public function savePostLike(Post $post)
+    public function savePostLike( Post $post)
     {
+
         $userId = Auth::user()->id;
-        $check=DB::table('likes')->select('id')
+        $check  = DB::table('likes')->select('id')
                 ->where('user_id',$userId)
                 ->where('likeable_id',$post->id)
                 ->where('likeable_type',"App\Post")->get();
         if(empty($check))
         {
             $post->addLike();
-            return back();
+            return Response:: view("partials.post_body",compact('post'));
         }
         else
         {
-            return back();
+            return 0;
+            
         }
         
     }
-    public function saveCommentLike(Commentable $comment)
+    public function saveCommentLike(Comment $comment)
     {
         $userId = Auth::user()->id;
         $check=DB::table('likes')->select('id')

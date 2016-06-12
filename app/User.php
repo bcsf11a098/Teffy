@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'lname', 'fname','country', 'city', 'email', 'password',
     ];
 
     /**
@@ -43,10 +43,17 @@ class User extends Authenticatable
         return $this->hasMany(Like::class);
     }
     
-    public function addPost(Request $request)
+    public function addPost(Request $req)
     {
         $post= new Post;
-        $post->body= $request->body;
-        return $this->posts()->save($post);
+        $post->discription = $req->discription;
+        $post->why         = $req->why;
+        $post->what        = $req->what;
+        $post->price       = $req->price;
+        $post->category    = $req->category;
+        $post->country     = $req->country;
+        $post->city        = $req->city;
+        $post->type        = "listing";
+        $this->posts()->save($post);
     }
 }

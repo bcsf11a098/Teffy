@@ -2,6 +2,11 @@
 var likes;
 $(document).ready(function()
 {
+	$('.post-btn').click(function()
+	{
+		$("myModal").modal("show")
+	});	
+
 	$('#new_post').click(function()
 	{
 		$("#new_post_panel").slideToggle("slow");
@@ -42,7 +47,7 @@ $(document).ready(function()
 
 	$(".comment").click(function(){
 		// alert("hello");
-		$(this).parent().siblings(".comments").slideToggle("slow");
+		 $(this).parent().parent().siblings(".comments").slideToggle("slow");
 	});
 	$(".viewReplies").click(function(){
 		// alert("hello");
@@ -73,6 +78,106 @@ $(document).ready(function()
 		var href = $(this).attr("href");//get the href so we can navigate later
     	window.location = href;	
 	});
+
+	$('#listingForm').submit(function(event)
+	{	
+	    event.preventDefault();
+	    var fData = new FormData(this);
+        $.ajaxSetup(
+        {
+            headers:{
+		      'X-CSRF-TOKEN': $('meta[name="listing"]').attr('content')
+            }
+		});
+        var mymodal = $("#myModal");
+        $.ajax(
+        {
+            url: "/listing",
+            type: "POST",
+            data: fData,
+            contentType: false,
+            processData: false,
+            success: function(result)
+            {	$("[data-dismiss=modal]").trigger({ type: "click" });
+             	
+            	alert("your listing has been posted");	
+            },
+        	error: function(result)
+        	{
+        		
+        		 alert("please fill all the fields");
+        		 
+        	}
+	    });
+        
+	});	
+
+	$('body').on('click', '.likes', function(event)
+	{	
+	    event.preventDefault();
+	    var href = '/like/'+$(this).data("id");
+  //       $.ajaxSetup(
+  //       {
+  //           headers:{
+		//       'X-CSRF-TOKEN': $('meta[name="listing"]').attr('content')
+  //           }
+		// });
+        var id = "#"+$(this).data("id");
+        $.ajax(
+        {
+            url: href,
+            type: "GET",
+            contentType: false,
+            processData: false,
+            success: function(result)
+            {
+            	if(result != 0)
+            	{
+            		$(id).replaceWith(result);
+            	}
+      		},
+        	error: function(result)
+        	{
+        		window.location.href = "/login" 
+        	}
+	    });
+        
+	});	
+	$('body').on('submit', '.comment_form', function(event)
+	{	
+	    event.preventDefault();
+	    var fData = new FormData(this);
+        $.ajaxSetup(
+        {
+            headers:{
+		      'X-CSRF-TOKEN': $('meta[class="com"]').attr('content')
+            }
+		});
+        var id = "#"+$(this).data("id");
+        $.ajax(
+        {
+            url: $(this).attr('action'),
+            type: "POST",
+            data: fData,
+            contentType: false,
+            processData: false,
+            success: function(result)
+            {	
+            	if(result != 0)
+            	{
+            		$(id).replaceWith(result);
+            	}
+            },
+        	error: function(result)
+        	{
+        		
+        		window.location.href = "/login" 
+        		 
+        	}
+	    });
+        
+	});	
+
 
 });
 
