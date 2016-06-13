@@ -8,7 +8,7 @@
                 <div class="col-md-12 h">
 
 
-                    <button type="button" class="btn btn-link btn-md post-btn" data-toggle="modal">Post</button>
+                    <button type="button" class="btn btn-link btn-md post-btn" data-toggle="modal" data-target="#myModal">Post</button>
                     <button type="button" class="btn btn-link btn-md" data-toggle="modal" data-target="#"> <i class="fa fa-question-circle"></i>&nbsp;&nbsp;<i class="fa fa-envelope"></i>&nbsp;&nbsp;Ask</button>
                     <button type="button" class="btn btn-link btn-md" data-toggle="modal" data-target="#">search</button>
                     @include ('includes.post_modal')

@@ -89,7 +89,7 @@
                  <div class="panel-body comments1">
                     <div class="row">
                     <div class="col-md-2" style="padding-top:5px">
-                       <b> {{Auth::user()->fname}}</b>
+                       <b> </b>
                      </div>
                         <div class="col-md-10">
                         
